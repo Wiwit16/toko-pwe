@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('photo_tag', function (Blueprint $table) {
-            $table->foreignId('photo_id')->constrained('photos');
-            $table->foreignId('tag_id')->constrained('tags');
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('photo_tag');
+        Schema::dropIfExists('password_resets');
     }
 };
